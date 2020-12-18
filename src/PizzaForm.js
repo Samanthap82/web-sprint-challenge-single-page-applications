@@ -3,7 +3,7 @@ import React from "react";
 
 
 export default function PizzaForm(props) {
-    const { values, submit, update, } = props;
+    const { values, submit, update, disabled, errors } = props;
 
 const onChange = (evt) => {
         const {name, value, checked, type } = evt.target;
@@ -22,6 +22,7 @@ const onChange = (evt) => {
                     Name:
                     <input
                     type="text"
+                    className="name"
                     name="name"
                      onChange={onChange} 
                     value={values.name}
@@ -29,6 +30,7 @@ const onChange = (evt) => {
                     maxLength="30"
                     
                     ></input>
+                   
                 </label>
                 <h2>Size</h2>
                 <select name="size" value={values.size} onChange={onChange}>
@@ -87,7 +89,7 @@ const onChange = (evt) => {
                 name="extraCheese"
                 value="Yes" 
                 onChange={onChange}
-              
+              className="Yes"
                 checked={values.extraCheese === "Yes"}
                  />
             </label>
@@ -115,14 +117,15 @@ const onChange = (evt) => {
                     ></input>
                 </label>
               <div>
-                <button >Submit</button>
+                <button disabled={disabled} >Submit</button>
 
-            {/* disabled={disabled} */}
-            {/* <div className="errors">
-                <div>{errors.order}</div>
-                <div>{errors.size}</div>
-                <div>{errors.extraCheese}</div>
-                </div> */}</div>
+          
+             <div className="errors">
+                {errors.name && <div>{errors.name } </div>}
+                {errors.size && <div>{errors.size}</div>}
+                {errors.extraCheese && <div>{errors.extraCheese}</div>}
+                </div>
+                </div>
             </div>
         </form>
     )

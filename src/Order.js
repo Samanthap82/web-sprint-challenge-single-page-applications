@@ -3,7 +3,7 @@ import React from 'react'
 const Order = (props) => {
     return (
         <div>
-            <p>{props.details.name}</p>
+            <p className='Pizza'>{props.details.name}</p>
             <p>{props.details.size}</p>
             {props.details.pepperoni && <p>{props.details.pepperoni}</p>}
             {props.details.chicken && <p>{props.details.chicken}</p>}
